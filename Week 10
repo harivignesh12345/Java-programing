@@ -1,0 +1,237 @@
+1)
+Given an ArrayList, the task is to get the first and last element of the ArrayList in Java.
+
+Input: ArrayList = [1, 2, 3, 4] 
+Output: First = 1, Last = 4
+
+Input: ArrayList = [12, 23, 34, 45, 57, 67, 89] 
+Output: First = 12, Last = 89
+Approach:
+
+Get the ArrayList with elements.
+Get the first element of ArrayList using the get(index) method by passing index = 0.
+Get the last element of ArrayList using the get(index) method by passing index = size – 1.
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a Scanner object for user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt user to input the number of elements
+        //System.out.print("Enter the number of elements: ");
+        int n = scanner.nextInt();
+
+        // Create an ArrayList to store the user's input
+        ArrayList<Integer> list = new ArrayList<>();
+
+        // Prompt the user to input the elements
+        //System.out.println("Enter " + n + " elements:");
+        for (int i = 0; i < n; i++) {
+            list.add(scanner.nextInt());
+        }
+
+        // Check if the list is empty before trying to get first and last elements
+        if (!list.isEmpty()) {
+            // Get the first and last elements
+            int first = list.get(0);
+            int last = list.get(list.size() - 1);
+
+            // Print the ArrayList and the first/last elements
+            System.out.println("ArrayList: " + list);
+            System.out.println("First : " + first + ", Last : " + last);
+        } else {
+            System.out.println("The list is empty.");
+        }
+
+        // Close the scanner
+        scanner.close();
+    }
+}
+Test	Input	Expected	Got	
+1
+6
+30
+20
+40
+50
+10
+80
+ArrayList: [30, 20, 40, 50, 10, 80]
+First : 30, Last : 80
+ArrayList: [30, 20, 40, 50, 10, 80]
+First : 30, Last : 80
+2
+4
+5
+15
+25
+35
+ArrayList: [5, 15, 25, 35]
+First : 5, Last : 35
+ArrayList: [5, 15, 25, 35]
+First : 5, Last : 35
+2)
+The given Java program is based on the ArrayList methods and its usage. The Java program is partially filled. Your task is to fill in the incomplete statements to get the desired output.
+
+list.set();
+
+list.indexOf());
+
+list.lastIndexOf())
+
+list.contains()
+
+list.size());
+
+list.add();
+
+ list.remove();
+
+The above methods are used for the below Java program. 
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Prog {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Read the number of elements
+        int n = sc.nextInt();
+        
+        // Create an ArrayList to store integers
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        // Add elements to the list based on user input
+        for (int i = 0; i < n; i++) {
+            list.add(sc.nextInt());
+        }
+        
+        // Print the initial ArrayList
+        System.out.println("ArrayList: " + list);
+        
+        // 1. Replacing the element at index 1 with 100
+        list.set(1, 100);
+        
+        // 2. Getting the index of the first occurrence of 100
+        System.out.println("Index of 100 = " + list.indexOf(100));
+        
+        // 3. Getting the index of the last occurrence of 100
+        System.out.println("LastIndex of 100 = " + list.lastIndexOf(100));
+        
+        // 4. Check whether 200 is in the list or not
+        System.out.println( list.contains(200)); // Expected: false
+        
+        // 5. Print the size of the ArrayList
+        System.out.println("Size Of ArrayList = " + list.size());
+        
+        // 6. Inserting 500 at index 1
+        list.add(1, 500);
+        
+        // 7. Removing an element from position 3
+        list.remove(3);
+        
+        // 8. Print the updated ArrayList
+        System.out.print("ArrayList: " + list);
+    }
+}
+Test	Input	Expected	Got	
+1
+5
+1
+2
+3
+100
+5
+ArrayList: [1, 2, 3, 100, 5]
+Index of 100 = 1
+LastIndex of 100 = 3
+false
+Size Of ArrayList = 5
+ArrayList: [1, 500, 100, 100, 5]
+ArrayList: [1, 2, 3, 100, 5]
+Index of 100 = 1
+LastIndex of 100 = 3
+false
+Size Of ArrayList = 5
+ArrayList: [1, 500, 100, 100, 5]
+3)
+Write a Java program to reverse elements in an array list.
+Sample input and Output:
+Red
+Green
+Orange
+White
+Black
+Sample output
+List before reversing :                                                
+[Red, Green, Orange, White, Black]                                     
+List after reversing :                                                 
+[Black, White, Orange, Green, Red] 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class ReverseArrayList {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Read the number of colors or items (this will not be added to the list)
+        int n = sc.nextInt();
+        sc.nextLine(); // Consume the newline character after the integer input
+
+        // Create an ArrayList to store the color names or items
+        ArrayList<String> list = new ArrayList<>();
+
+        // Read the next 'n' colors or items
+        for (int i = 0; i < n; i++) {
+            list.add(sc.nextLine().trim());  // Add each color/item to the list
+        }
+
+        // Print the list before reversing
+        System.out.println("List before reversing :");
+        System.out.println(list);
+
+        // Reverse the ArrayList using Collections.reverse()
+        Collections.reverse(list);
+
+        // Print the list after reversing
+        System.out.println("List after reversing :");
+        System.out.println(list);
+
+        sc.close();
+    }
+}
+Test	Input	Expected	Got	
+1
+5
+Red
+Green
+Orange
+White
+Black
+List before reversing :
+[Red, Green, Orange, White, Black]
+List after reversing :
+[Black, White, Orange, Green, Red]
+List before reversing :
+[Red, Green, Orange, White, Black]
+List after reversing :
+[Black, White, Orange, Green, Red]
+2
+4
+CSE
+AIML
+AIDS
+CYBER
+List before reversing :
+[CSE, AIML, AIDS, CYBER]
+List after reversing :
+[CYBER, AIDS, AIML, CSE]
+List before reversing :
+[CSE, AIML, AIDS, CYBER]
+List after reversing :
+[CYBER, AIDS, AIML, CSE]
