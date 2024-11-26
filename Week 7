@@ -1,0 +1,352 @@
+1)
+RBI issues all national banks to collect interest on all customer loans.
+
+Create an RBI interface with a variable  String parentBank="RBI" and abstract method rateOfInterest().
+
+RBI interface has two more methods default and static method.
+
+default void policyNote() {
+
+System.out.println("RBI has a new Policy issued in 2023.");
+
+}
+
+static void regulations(){
+
+System.out.println("RBI has  updated new regulations on 2024.");
+
+}
+
+Create two subclasses SBI and Karur which implements the RBI interface.
+
+Provide the necessary code for the abstract method in two sub-classes. 
+
+Sample Input/Output:
+
+RBI has a new Policy issued in 2023
+RBI has updated new regulations in 2024.
+SBI rate of interest: 7.6 per annum.
+Karur rate of interest: 7.4 per annum.
+
+interface RBI {
+    // Variable
+    String parentBank = "RBI";
+
+    // Abstract Method
+    double rateOfInterest();
+
+    // Default Method
+    default void policyNote() {
+        System.out.println("RBI has a new Policy issued in 2023");
+    }
+
+    // Static Method
+    static void regulations() {
+        System.out.println("RBI has updated new regulations in 2024.");
+    }
+}
+
+// SBI class implementing RBI interface
+class SBI implements RBI {
+    // Overriding the abstract method
+    @Override
+    public double rateOfInterest() {
+        return 7.6;
+    }
+}
+
+// Karur class implementing RBI interface
+class Karur implements RBI {
+    // Overriding the abstract method
+    @Override
+    public double rateOfInterest() {
+        return 7.4;
+    }
+}
+
+// Main class to test the program
+public class Main {
+    public static void main(String[] args) {
+        // Creating objects of SBI and Karur
+        SBI sbi = new SBI();
+        Karur karur = new Karur();
+
+        // Calling default method from SBI
+        sbi.policyNote();
+
+        // Calling static method from RBI
+        RBI.regulations();
+
+        // Displaying rate of interest
+        System.out.println("SBI rate of interest: " + sbi.rateOfInterest() + " per annum.");
+        System.out.println("Karur rate of interest: " + karur.rateOfInterest() + " per annum.");
+    }
+}
+Test	Expected	Got	
+1
+RBI has a new Policy issued in 2023
+RBI has updated new regulations in 2024.
+SBI rate of interest: 7.6 per annum.
+Karur rate of interest: 7.4 per annum.
+RBI has a new Policy issued in 2023
+RBI has updated new regulations in 2024.
+SBI rate of interest: 7.6 per annum.
+Karur rate of interest: 7.4 per annum
+2)
+
+Create interfaces shown below. 
+
+ interface Sports {
+public void setHomeTeam(String name);
+public void setVisitingTeam(String name); 
+}
+ interface Football extends Sports {
+public void homeTeamScored(int points);
+public void visitingTeamScored(int points);}
+create a class College that implements the Football interface and provides the necessary functionality to the abstract methods. 
+
+sample Input:
+
+Rajalakshmi
+Saveetha
+22
+21
+
+Output:
+
+Rajalakshmi 22 scored
+Saveetha 21 scored
+Rajalakshmi is the Winner!
+import java.util.Scanner;
+
+// Sports Interface
+interface Sports {
+    public void setHomeTeam(String name);
+    public void setVisitingTeam(String name);
+}
+
+// Football Interface that extends Sports
+interface Football extends Sports {
+    public void homeTeamScored(int points);
+    public void visitingTeamScored(int points);
+}
+
+// College class implementing Football interface
+class College implements Football {
+    String homeTeam;
+    String visitingTeam;
+
+    // Set home team name
+    public void setHomeTeam(String name) {
+        this.homeTeam = name;
+    }
+
+    // Set visiting team name
+    public void setVisitingTeam(String name) {
+        this.visitingTeam = name;
+    }
+
+    // Display points scored by home team
+    public void homeTeamScored(int points) {
+        System.out.println(homeTeam + " " + points + " scored");
+    }
+
+    // Display points scored by visiting team
+    public void visitingTeamScored(int points) {
+        System.out.println(visitingTeam + " " + points + " scored");
+    }
+
+    // Determine and display the winning team
+    public void winningTeam(int p1, int p2) {
+        if (p1 > p2) {
+            System.out.println(homeTeam + " is the winner!");
+        } else if (p1 < p2) {
+            System.out.println(visitingTeam + " is the winner!");
+        } else {
+            System.out.println("It's a tie match.");
+        }
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Reading input values
+        String hname = sc.next();
+        String vteam = sc.next();
+        int htpoints = sc.nextInt();
+        int vtpoints = sc.nextInt();
+
+        // Creating object of College class
+        College s = new College();
+        
+        // Setting teams
+        s.setHomeTeam(hname);
+        s.setVisitingTeam(vteam);
+
+        // Scoring points
+        s.homeTeamScored(htpoints);
+        s.visitingTeamScored(vtpoints);
+
+        // Displaying winning team
+        s.winningTeam(htpoints, vtpoints);
+        
+        // Closing scanner
+        sc.close();
+    }
+}
+Test	Input	Expected	Got	
+1
+Rajalakshmi
+Saveetha
+22
+21
+Rajalakshmi 22 scored
+Saveetha 21 scored
+Rajalakshmi is the winner!
+Rajalakshmi 22 scored
+Saveetha 21 scored
+Rajalakshmi is the winner!
+2
+Anna
+Balaji
+21
+21
+Anna 21 scored
+Balaji 21 scored
+It's a tie match.
+Anna 21 scored
+Balaji 21 scored
+It's a tie match.
+3
+SRM
+VIT
+20
+21
+SRM 20 scored
+VIT 21 scored
+VIT is the winner!
+SRM 20 scored
+VIT 21 scored
+VIT is the winner!
+3)
+create an interface Playable with a method play() that takes no arguments and returns void. Create three classes Football, Volleyball, and Basketball that implement the Playable interface and override the play() method to play the respective sports.
+
+interface Playable {
+    void play();
+}
+
+class Football implements Playable {
+    String name;
+    public Football(String name){
+        this.name=name;
+    }
+  public void play() {
+    System.out.println(name+" is Playing football");
+   }
+}
+
+Similarly, create Volleyball and Basketball classes.
+
+Sample output:
+
+Sadhvin is Playing football
+Sanjay is Playing volleyball
+Sruthi is Playing basketball
+import java.util.Scanner;
+
+// Playable Interface
+interface Playable {
+    void play();
+}
+
+// Football class implementing Playable
+class Football implements Playable {
+    String name;
+    
+    public Football(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void play() {
+        System.out.println(name + " is Playing football");
+    }
+}
+
+// Volleyball class implementing Playable
+class Volleyball implements Playable {
+    String name;
+    
+    public Volleyball(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void play() {
+        System.out.println(name + " is Playing volleyball");
+    }
+}
+
+// Basketball class implementing Playable
+class Basketball implements Playable {
+    String name;
+    
+    public Basketball(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void play() {
+        System.out.println(name + " is Playing basketball");
+    }
+}
+
+// Main class to test the program
+public class Main {
+    public static void main(String[] args) {
+        // Using Scanner to get input dynamically
+        Scanner scanner = new Scanner(System.in);
+
+        // Getting names of the players from input
+        String footballPlayerName = scanner.nextLine();
+        String volleyballPlayerName = scanner.nextLine();
+        String basketballPlayerName = scanner.nextLine();
+
+        // Creating objects with input names
+        Football footballPlayer = new Football(footballPlayerName);
+        Volleyball volleyballPlayer = new Volleyball(volleyballPlayerName);
+        Basketball basketballPlayer = new Basketball(basketballPlayerName);
+
+        // Calling play method for each player
+        footballPlayer.play();
+        volleyballPlayer.play();
+        basketballPlayer.play();
+
+        // Closing scanner to avoid resource leaks
+        scanner.close();
+    }
+}
+	Test	Input	Expected	Got	
+1
+Sadhvin
+Sanjay
+Sruthi
+Sadhvin is Playing football
+Sanjay is Playing volleyball
+Sruthi is Playing basketball
+Sadhvin is Playing football
+Sanjay is Playing volleyball
+Sruthi is Playing basketball
+2
+Vijay
+Arun
+Balaji
+Vijay is Playing football
+Arun is Playing volleyball
+Balaji is Playing basketball
+Vijay is Playing football
+Arun is Playing volleyball
+Balaji is Playing basketball
